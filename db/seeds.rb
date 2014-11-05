@@ -102,6 +102,7 @@ Movie.create!([
     rating: 'PG-13',
     total_gross: 387_623_910
   }
+  {
   title: 'Sherlock Holmes',
     description: 
     %{
@@ -116,4 +117,5 @@ Movie.create!([
     director: 'Jon Favreau',
     rating: 'PG-13',
     total_gross: 209_019_489
+  }
 ])
