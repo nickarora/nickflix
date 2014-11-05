@@ -2,6 +2,8 @@ RATINGS = %w(G PG PG-13 R NC NC-17)
 
 class Movie < ActiveRecord::Base
   
+  has_attached_file :image
+  
   validates :rating, inclusion: { in: RATINGS }
 
   validates :title, :released_on, :duration, presence: true
@@ -10,15 +12,12 @@ class Movie < ActiveRecord::Base
 
   validates :total_gross, numericality: { greater_than_or_equal_to: 0 }
 
-  validates :image_file_name, allow_blank: true, format: {
-
-    with: /\w+.(gif|jpg|png)\z/i,
-
-    message: "must reference a GIF, JPG, or PNG image"
-
-  }
+  validates_attachment :image, 
+  :content_type => { :content_type => ['image/jpeg', 'image/png'] },
+  :size => { :less_than => 1.megabyte }
 
   has_many :reviews, dependent: :destroy
+  
 
   def recent_reviews
     reviews.order('created_at').limit(2)

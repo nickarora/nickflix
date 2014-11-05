@@ -8,10 +8,11 @@ module MoviesHelper
  end
  
  def image_for(movie)
-   if movie.image_file_name.blank?
-     image_tag('placeholder.png')
-   else
-     image_tag(movie.image_file_name)
-   end
+    if movie.image.exists?
+      image_tag(movie.image.url)
+    else
+      image_tag('placeholder.png')
+    end
  end
+ 
 end
