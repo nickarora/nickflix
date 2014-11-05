@@ -2,8 +2,11 @@ RATINGS = %w(G PG PG-13 R NC NC-17)
 
 class Movie < ActiveRecord::Base
   
-  has_attached_file :image
-  
+  has_attached_file :image, styles: {
+    small: "90x133>",
+    thumb: "50x50>"
+  }
+
   validates :rating, inclusion: { in: RATINGS }
 
   validates :title, :released_on, :duration, presence: true
