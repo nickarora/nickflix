@@ -101,7 +101,7 @@ Movie.create!([
     director: 'Ishiro Honda',
     rating: 'PG-13',
     total_gross: 387_623_910
-  }
+  },
   {
   title: 'Sherlock Holmes',
     description: 
